@@ -5,10 +5,12 @@ import compression from 'compression';
 import cors from 'cors';
 import dotenv from 'dotenv';
 import helmet from 'helmet';
+import mongoose from 'mongoose';
 import todoRoutes from './routes/todos';
 
 dotenv.config();
 const port = process.env.PORT || 3001;
+const dbUrl = process.env.DB_URL || '';
 const app: Application = express();
 // register middleware
 app.use(compression());
@@ -23,6 +25,13 @@ app.use((req: Request, res: Response, next: NextFunction) => {
 // register routes
 app.use('/api/todos', todoRoutes);
 
-app.listen(port, function () {
-    console.log(`⚡️[server]: Server is running at http://localhost:${port}`);
-});
+mongoose
+    .connect(dbUrl)
+    .then(() => {
+        app.listen(process.env.PORT, () => {
+            console.log(
+                `⚡️[server]: Connected to DB & Server is running at http://localhost:${port}`
+            );
+        });
+    })
+    .catch((error) => console.log(error));
