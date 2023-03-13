@@ -1,7 +1,7 @@
 {
   "name": "ts-express-mongo",
   "version": "1.0.0",
-  "description": "",
+  "description": "A basic start up template for building a node application with combination of Typescript, Express and MongoDB",
   "main": "dist/index.js",
   "scripts": {
     "lint": "eslint --ext .ts src/",
@@ -15,7 +15,7 @@
     "type": "git",
     "url": "git+https://github.com/tkaeophian/node-ts-express-mongo.git"
   },
-  "author": "",
+  "author": "Tee Kaeophian",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/tkaeophian/node-ts-express-mongo/issues"
@@ -27,7 +27,8 @@
     "dotenv": "^16.0.3",
     "express": "^4.18.2",
     "helmet": "^6.0.1",
-    "jsonwebtoken": "^9.0.0"
+    "jsonwebtoken": "^9.0.0",
+    "mongoose": "^7.0.1"
   },
   "devDependencies": {
     "@types/compression": "^1.7.2",
