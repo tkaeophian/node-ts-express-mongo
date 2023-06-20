@@ -13,8 +13,39 @@ const router = express.Router();
 // register auth guard for all todo endpoints
 router.use(authGuard);
 // GET ALL
+/**
+ * @swagger
+ *
+ * /api/todos:
+ *   get:
+ *     description: List todo
+ *     produces:
+ *       - application/json
+ *     responses:
+ *       200:
+ *         description: the list of the todos
+ */
 router.get('/', getTodos);
 // GET ONE
+/**
+ * @swagger
+ *
+ * /api/todos/{id}:
+ *   get:
+ *     description: Get Todo
+ *     parameters:
+ *       - in: path
+ *         name: id
+ *         schema:
+ *           type: string
+ *         required: true
+ *         description: todo id
+ *     produces:
+ *       - application/json
+ *     responses:
+ *       200:
+ *         description: get todo
+ */
 router.get('/:id', getTodo);
 // CREATE
 router.post('/', createTodo);
