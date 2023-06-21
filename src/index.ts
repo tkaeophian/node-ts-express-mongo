@@ -1,40 +1,36 @@
-import express, { Application, NextFunction, Request, Response } from 'express';
-
-import cache from './middleware/cache';
+import express, { Application } from 'express';
+import morgan from 'morgan';
+import Router from './routes';
 import compression from 'compression';
-import cors from 'cors';
-import dotenv from 'dotenv';
 import helmet from 'helmet';
-import mongoose from 'mongoose';
-import swaggerSpec from "./swagger-docs";
-import swaggerUi from "swagger-ui-express";
-import todoRoutes from './routes/todos';
+import cors from 'cors';
+import cache from './middleware/cache';
+import swaggerUi from 'swagger-ui-express';
 
-dotenv.config();
 const port = process.env.PORT || 3001;
-const dbUrl = process.env.DB_URL || '';
+
 const app: Application = express();
-// register middleware
+
 app.use(compression());
 app.use(helmet());
 app.use(cors());
-app.use("/swagger-ui", swaggerUi.serve, swaggerUi.setup(swaggerSpec));
 app.use(cache);
-app.use((req: Request, res: Response, next: NextFunction) => {
-    console.log(req.path, req.method);
-    next();
-});
-
-// register routes
-app.use('/api/todos', todoRoutes);
-
-mongoose
-    .connect(dbUrl)
-    .then(() => {
-        app.listen(process.env.PORT, () => {
-            console.log(
-                `⚡️[server]: Connected to DB & Server is running at http://localhost:${port}, Swagger UI http://localhost:${port}/swagger-ui`
-            );
-        });
+app.use(express.json());
+app.use(morgan('tiny'));
+app.use(express.static('public'));
+app.use(
+    '/swagger',
+    swaggerUi.serve,
+    swaggerUi.setup(undefined, {
+        swaggerOptions: {
+            url: '/swagger.json'
+        }
     })
-    .catch((error) => console.log(error));
+);
+app.use(Router);
+
+app.listen(port, () => {
+    console.log(
+        `⚡️[server]: Connected to DB & Server is running at http://localhost:${port}`
+    );
+});
