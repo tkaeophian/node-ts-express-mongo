@@ -1,7 +1,12 @@
 module.exports = {
     preset: 'ts-jest',
+    clearMocks: true,
     testEnvironment: 'node',
-    roots: ['<rootDir>/tests'],
+    roots: ['<rootDir>/tests', './src'],
     setupFiles: ['<rootDir>/tests/setup.ts'],
-    collectCoverageFrom: ['<rootDir>/src/**/*.ts', '!**/node_modules/**']
+    transform: {
+        '^.+\\.(ts|tsx)?$': 'ts-jest'
+    },
+    collectCoverage: true,
+    collectCoverageFrom: ['src/**/*.{js,ts}']
 };
