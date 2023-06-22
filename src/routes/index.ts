@@ -1,3 +1,4 @@
+import ApiError, { StatusCodes } from '../utils/apiError';
 import express, { Request, Response } from 'express';
 
 import PingRouter from './ping.router';
@@ -10,9 +11,8 @@ router.use('/api/ping', PingRouter);
 router.use('/api/users', UserRouter);
 router.use('/api/error', (req: Request, res: Response, next) => {
     try {
-        throw new Error(`Testing error handler`);
+        throw ApiError('Testing error handler', StatusCodes.BAD_REQUEST);
     } catch (err: any) {
-        err.statusCode = 400;
         next(err);
     }
 });

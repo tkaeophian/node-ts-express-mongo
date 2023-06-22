@@ -1,6 +1,5 @@
 import { CreateUserInput } from '../schema/user.schema';
 import { User } from '../models/user.model';
-import log from '../utils/logger';
 
 class UserService {
     public async getUsers(): Promise<Array<User>> {

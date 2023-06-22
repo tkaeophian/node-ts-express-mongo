@@ -29,7 +29,6 @@ app.use(
     })
 );
 app.use(Router);
-
 app.use(errorHandler);
 
 export default app;

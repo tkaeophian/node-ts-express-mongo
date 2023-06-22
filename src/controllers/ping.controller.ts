@@ -1,10 +1,10 @@
-import { Get, Route } from 'tsoa';
+import { Controller, Get, Route } from 'tsoa';
 
 interface PingResponse {
     message: string;
 }
 @Route('api/ping')
-export default class PingController {
+export class PingController extends Controller {
     @Get('/')
     public async getMessage(): Promise<PingResponse> {
         return {
