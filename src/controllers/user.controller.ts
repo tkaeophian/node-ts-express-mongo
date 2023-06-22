@@ -1,5 +1,5 @@
 import { Get, Route, Tags, Post, Body, Path } from 'tsoa';
-import { User } from '../models/user';
+import { User } from '../models/user.model';
 import {
     IUserPayload,
     createUser,

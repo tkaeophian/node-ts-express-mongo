@@ -1,4 +1,4 @@
-import { User } from '../models/user';
+import { User } from '../models/user.model';
 
 export interface IUserPayload {
     firstName: string;
@@ -11,11 +11,13 @@ export const getUsers = async (): Promise<Array<User>> => {
 };
 
 export const createUser = async (payload: IUserPayload): Promise<User> => {
-    const user = new User();
-    return user;
+    // const user = new User();
+    // return user;
+    return new User();
 };
 
 export const getUser = async (id: number): Promise<User | null> => {
-    const user = new User();
-    return user;
+    // const user = new User();
+    // return user;
+    return null;
 };
