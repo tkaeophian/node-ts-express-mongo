@@ -1,27 +1,23 @@
 import { Get, Route, Tags, Post, Body, Path } from 'tsoa';
 import { User } from '../models/user.model';
-import {
-    IUserPayload,
-    createUser,
-    getUser,
-    getUsers
-} from '../repositories/user';
+import { createUser, getUser, getUsers } from '../service/user.service';
+import { CreateUserInput } from '../schema/user.schema';
 
 @Route('users')
 @Tags('User')
 export default class UserController {
     @Get('/')
     public async getUsers(): Promise<Array<User>> {
-        return getUsers();
+        return await getUsers();
     }
 
     @Post('/')
-    public async createUser(@Body() body: IUserPayload): Promise<User> {
-        return createUser(body);
+    public async createUser(@Body() body: CreateUserInput): Promise<User> {
+        return await createUser(body);
     }
 
     @Get('/:id')
     public async getUser(@Path() id: string): Promise<User | null> {
-        return getUser(Number(id));
+        return await getUser(Number(id));
     }
 }
