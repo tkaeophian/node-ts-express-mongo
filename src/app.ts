@@ -1,10 +1,15 @@
 import express, { Application } from 'express';
-import morgan from 'morgan';
+
 import Router from './routes';
-import compression from 'compression';
-import helmet from 'helmet';
 import cache from './middleware/cache';
+import compression from 'compression';
+import dotenv from 'dotenv';
+import errorHandler from './middleware/errorHandler';
+import helmet from 'helmet';
+import morgan from 'morgan';
 import swaggerUi from 'swagger-ui-express';
+
+dotenv.config();
 
 const app: Application = express();
 
@@ -24,5 +29,7 @@ app.use(
     })
 );
 app.use(Router);
+
+app.use(errorHandler);
 
 export default app;
