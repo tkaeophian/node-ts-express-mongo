@@ -89,7 +89,7 @@
 	},
 	"openapi": "3.0.0",
 	"paths": {
-		"/ping": {
+		"/api/ping": {
 			"get": {
 				"operationId": "GetMessage",
 				"responses": {
@@ -108,7 +108,7 @@
 				"parameters": []
 			}
 		},
-		"/users": {
+		"/api/users": {
 			"get": {
 				"operationId": "GetUsers",
 				"responses": {
@@ -163,7 +163,7 @@
 				}
 			}
 		},
-		"/users/{id}": {
+		"/api/users/{id}": {
 			"get": {
 				"operationId": "GetUser",
 				"responses": {

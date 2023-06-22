@@ -3,7 +3,7 @@ import { User } from '../models/user.model';
 import { createUser, getUser, getUsers } from '../service/user.service';
 import { CreateUserInput } from '../schema/user.schema';
 
-@Route('users')
+@Route('api/users')
 @Tags('User')
 export default class UserController {
     @Get('/')

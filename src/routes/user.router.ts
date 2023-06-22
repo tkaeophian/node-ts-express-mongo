@@ -15,9 +15,13 @@ router.post(
     '/',
     validatePayload(createUserSchema),
     async (req: Request, res: Response) => {
-        const controller = new UserController();
-        const response = await controller.createUser(req.body);
-        return res.send(response);
+        try {
+            const controller = new UserController();
+            const response = await controller.createUser(req.body);
+            return res.send(response);
+        } catch (e: any) {
+            return res.status(400).send({ message: e });
+        }
     }
 );
 

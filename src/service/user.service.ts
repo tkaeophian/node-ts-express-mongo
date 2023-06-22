@@ -6,8 +6,6 @@ export const getUsers = async (): Promise<Array<User>> => {
 };
 
 export const createUser = async (payload: CreateUserInput): Promise<User> => {
-    // const user = new User();
-    // return user;
     return new User();
 };
 
