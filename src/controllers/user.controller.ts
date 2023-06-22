@@ -1,23 +1,30 @@
-import { Get, Route, Tags, Post, Body, Path } from 'tsoa';
-import { User } from '../models/user.model';
-import { createUser, getUser, getUsers } from '../service/user.service';
-import { CreateUserInput } from '../schema/user.schema';
+import { Request, Response } from 'express';
+import UserService from '../service/user.service';
+const userService = new UserService();
 
-@Route('api/users')
-@Tags('User')
-export default class UserController {
-    @Get('/')
-    public async getUsers(): Promise<Array<User>> {
-        return await getUsers();
+export const getUsers = async (req: Request, res: Response) => {
+    try {
+        const users = userService.getUsers();
+        return res.send(users);
+    } catch (e: any) {
+        return res.status(400).send({ message: e });
     }
+};
 
-    @Post('/')
-    public async createUser(@Body() body: CreateUserInput): Promise<User> {
-        return await createUser(body);
+export const createUser = async (req: Request, res: Response) => {
+    try {
+        const user = userService.createUser(req.body);
+        return res.status(201).send(user);
+    } catch (e: any) {
+        return res.status(400).send({ message: e });
     }
+};
 
-    @Get('/:id')
-    public async getUser(@Path() id: string): Promise<User | null> {
-        return await getUser(Number(id));
+export const getUser = async (req: Request, res: Response) => {
+    try {
+        const user = userService.getUser(req.params.id);
+        return res.status(200).send(user);
+    } catch (e: any) {
+        return res.status(400).send({ message: e });
     }
-}
+};

@@ -126,17 +126,14 @@
 						}
 					}
 				},
-				"tags": [
-					"User"
-				],
 				"security": [],
 				"parameters": []
 			},
 			"post": {
 				"operationId": "CreateUser",
 				"responses": {
-					"200": {
-						"description": "Ok",
+					"201": {
+						"description": "",
 						"content": {
 							"application/json": {
 								"schema": {
@@ -146,9 +143,6 @@
 						}
 					}
 				},
-				"tags": [
-					"User"
-				],
 				"security": [],
 				"parameters": [],
 				"requestBody": {
@@ -183,9 +177,6 @@
 						}
 					}
 				},
-				"tags": [
-					"User"
-				],
 				"security": [],
 				"parameters": [
 					{
