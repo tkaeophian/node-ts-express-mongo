@@ -19,7 +19,7 @@ export class UsersController extends Controller {
     }
 
     @Get('/:id')
-    public async getUser(id: string | null): Promise<User | null> {
+    public async getUser(id: string): Promise<User | null> {
         return await this.userService.getUser(id);
     }
 }

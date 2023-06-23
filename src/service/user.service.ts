@@ -1,6 +1,5 @@
 import { CreateUserInput } from '../schema/user.schema';
 import { User } from '../models/user.model';
-import log from '../utils/logger';
 
 class UserService {
     public async getUsers(): Promise<Array<User>> {
@@ -11,17 +10,19 @@ class UserService {
     }
 
     public async createUser(payload: CreateUserInput): Promise<User> {
-        log.info(payload);
+        const user = new User();
+        user.firstName = payload.firstName;
+
         return new Promise<User>((resolve) => {
-            resolve(new User());
+            resolve(user);
         });
     }
 
-    public async getUser(id: string | null): Promise<User | null> {
-        log.info(id);
-
+    public async getUser(id: string): Promise<User | null> {
+        const user = new User();
+        user.id = id;
         return new Promise<User>((resolve) => {
-            resolve(new User());
+            resolve(user);
         });
     }
 }
