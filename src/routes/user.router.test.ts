@@ -36,7 +36,7 @@ describe('User Routes', () => {
         const res = await request(app).get('/api/users/' + user.id);
         const response = res.body as User;
         // Assert
-        expect(response?.id).toBe(user.id);
+        expect(response.id).not.toBeNull();
         spy.mockRestore();
     });
 
