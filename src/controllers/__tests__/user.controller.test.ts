@@ -1,5 +1,5 @@
-import { UsersController } from './users.controller';
-import { generateUsers } from '../../tests/generate';
+import { UsersController } from '../users.controller';
+import { generateUsers } from '../../../tests/generate';
 describe('User controller tests', () => {
     test('should return list of user', async () => {
         // Arrange

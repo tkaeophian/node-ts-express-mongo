@@ -1,5 +1,5 @@
 import { Controller, Route, Get, Post, SuccessResponse, Body } from 'tsoa';
-import UserService from '../service/user.service';
+import UserService from '../services/user.service';
 import { User } from '../models/user.model';
 import { CreateUserInput } from '../schema/user.schema';
 

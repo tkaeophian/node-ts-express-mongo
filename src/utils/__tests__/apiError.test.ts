@@ -1,4 +1,4 @@
-import ApiError, { StatusCodes } from './apiError';
+import ApiError, { StatusCodes } from '../apiError';
 
 describe('Api Error tests', () => {
     test('should return 202 status code', () => {

@@ -1,5 +1,5 @@
-import { PingResponse } from '../controllers/ping.controller';
-import app from '../app';
+import { PingResponse } from '../../controllers/ping.controller';
+import app from '../../app';
 import request from 'supertest';
 
 describe('GET /ping', () => {

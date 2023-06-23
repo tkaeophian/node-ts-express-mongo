@@ -1,4 +1,4 @@
-import { PingController } from './ping.controller';
+import { PingController } from '../ping.controller';
 
 test('should return pong message', async () => {
     // Arrange

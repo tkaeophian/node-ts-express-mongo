@@ -1,4 +1,4 @@
-import log from './logger';
+import log from '../logger';
 
 describe('Logger tests', () => {
     test('test logging', () => {

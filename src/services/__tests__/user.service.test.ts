@@ -2,9 +2,9 @@ import {
     createUserPayload,
     generateUser,
     generateUsers
-} from '../../tests/generate';
+} from '../../../tests/generate';
 
-import UserService from './user.service';
+import UserService from '../user.service';
 
 describe('User service tests', () => {
     test('should return list of user', async () => {

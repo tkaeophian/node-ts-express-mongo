@@ -2,11 +2,11 @@ import {
     createUserPayload,
     generateUser,
     generateUsers
-} from '../../tests/generate';
+} from '../../../tests/generate';
 
-import { User } from '../models/user.model';
-import { UsersController } from '../controllers/users.controller';
-import app from '../app';
+import { User } from '../../models/user.model';
+import { UsersController } from '../../controllers/users.controller';
+import app from '../../app';
 import request from 'supertest';
 
 describe('User Routes', () => {
