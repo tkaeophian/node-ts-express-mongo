@@ -1,14 +1,16 @@
 import { Controller, Get, Route } from 'tsoa';
 
-interface PingResponse {
+export class PingResponse {
     message: string;
 }
 @Route('api/ping')
 export class PingController extends Controller {
     @Get('/')
     public async getMessage(): Promise<PingResponse> {
-        return {
-            message: 'pong'
-        };
+        const response = new PingResponse();
+        response.message = 'pong';
+        return new Promise((resolve) => {
+            resolve(response);
+        });
     }
 }

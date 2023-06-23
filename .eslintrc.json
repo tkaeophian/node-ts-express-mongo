@@ -20,6 +20,6 @@
     ],
     "ignorePatterns": ["**/*.spec.ts"],
     "rules": {
-        
+        "@typescript-eslint/no-misused-promises": 0
     }
 }

@@ -1,18 +1,28 @@
 import { CreateUserInput } from '../schema/user.schema';
 import { User } from '../models/user.model';
+import log from '../utils/logger';
 
 class UserService {
     public async getUsers(): Promise<Array<User>> {
-        return [];
+        const users = [] as Array<User>;
+        return new Promise<Array<User>>((resolve) => {
+            resolve(users);
+        });
     }
 
     public async createUser(payload: CreateUserInput): Promise<User> {
-        return new User();
+        log.info(payload);
+        return new Promise<User>((resolve) => {
+            resolve(new User());
+        });
     }
 
     public async getUser(id: string | null): Promise<User | null> {
-        let user = new User();
-        return user;
+        log.info(id);
+
+        return new Promise<User>((resolve) => {
+            resolve(new User());
+        });
     }
 }
 

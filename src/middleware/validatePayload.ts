@@ -1,6 +1,6 @@
-import { Request, Response, NextFunction } from 'express';
-import { AnyZodObject } from 'zod';
-
+import { AnyZodObject, ZodError } from 'zod';
+import { NextFunction, Request, Response } from 'express';
+/* eslint-disable @typescript-eslint/no-unsafe-assignment */
 const validatePayload =
     (schema: AnyZodObject) =>
     (req: Request, res: Response, next: NextFunction) => {
@@ -11,8 +11,11 @@ const validatePayload =
                 params: req.params
             });
             next();
-        } catch (e: any) {
-            return res.status(400).send(e.errors);
+        } catch (e) {
+            if (e instanceof ZodError) {
+                return res.status(400).send(e.errors);
+            }
+            return res.status(400).send(e);
         }
     };
 

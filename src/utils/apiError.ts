@@ -343,11 +343,18 @@ export enum StatusCodes {
     NETWORK_AUTHENTICATION_REQUIRED = 511
 }
 
+export class BaseError extends Error {
+    statusCode: StatusCodes;
+    stack: string;
+    constructor(message: string, statusCode: StatusCodes) {
+        super();
+        this.message = message;
+        this.statusCode = statusCode;
+    }
+}
+
 const ApiError = (message: string, statusCode: StatusCodes) => {
-    const error: any = new Error();
-    error.message = message;
-    error.statusCode = statusCode;
-    return error;
+    return new BaseError(message, statusCode);
 };
 
 export default ApiError;

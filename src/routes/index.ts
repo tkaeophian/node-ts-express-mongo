@@ -12,7 +12,7 @@ router.use('/api/users', UserRouter);
 router.use('/api/error', (req: Request, res: Response, next) => {
     try {
         throw ApiError('Testing error handler', StatusCodes.BAD_REQUEST);
-    } catch (err: any) {
+    } catch (err) {
         next(err);
     }
 });

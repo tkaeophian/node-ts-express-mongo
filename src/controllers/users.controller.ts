@@ -9,17 +9,17 @@ export class UsersController extends Controller {
 
     @Get('/')
     public async getUsers(): Promise<Array<User>> {
-        return this.userService.getUsers();
+        return await this.userService.getUsers();
     }
 
     @Post('/')
     @SuccessResponse(201)
     public async createUser(@Body() body: CreateUserInput): Promise<User> {
-        return this.userService.createUser(body);
+        return await this.userService.createUser(body);
     }
 
     @Get('/:id')
     public async getUser(id: string | null): Promise<User | null> {
-        return this.userService.getUser(id);
+        return await this.userService.getUser(id);
     }
 }
