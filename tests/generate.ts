@@ -3,7 +3,7 @@ import { faker } from '@faker-js/faker';
 
 export function generateUser(overide = {}): User {
     return {
-        id: faker.string.sample(),
+        id: faker.number.int().toString(),
         firstName: faker.person.firstName(),
         lastName: faker.person.lastName(),
         email: faker.internet.email(),
